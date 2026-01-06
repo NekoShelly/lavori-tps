@@ -1,0 +1,67 @@
+#include <stdio.h>   // printf
+#include <unistd.h>  // getpid, fork
+int main() {
+  char m;
+  int led=0;
+  do {
+    m=' ';
+    printf("Cosa vuoi fare? (v= lampeggi del led verde, r= lampeggi del led rosso, g= lampeggi del led giallo, q= chiusura del programma) \n");
+    scanf ("%c",&m);
+    sleep(2.0);
+    } while (m!='v' && m!='r' && m!='g' && m!='q' && m!=' '); //chiusura primo do while
+
+    do{
+    if (m=='v'){
+       printf("led1"); //<-----controllo se entra nell'if
+       led=2;
+    }
+    if (m=='r'){
+       printf("led2"); //<-----controllo se entra nell'if
+       led=2;
+    }
+    if (m=='g'){
+       printf("led3"); //<-----controllo se entra nell'if
+       led=3;
+    }
+    if (m=='q')
+
+    } while (m!='q');
+    int pid = fork();
+    if (pid==0) {
+        /* codice figlio */
+        switch (led){
+        case 1:
+	for(int i=0; i<10; i++) {
+		printf("%d Led verde acceso \n", i+1);
+		sleep(0.3);
+		printf("%d Led verde spento \n", i+1);
+		sleep(0.3);
+		printf("\n");
+	}
+        break;
+        case 2:
+        for(int i=0; i<10; i++) {
+                printf("%d Led rosso acceso \n", i+1);
+                sleep(0.7);
+		printf("%d Led rosso spento \n", i+1);
+                sleep(0.7);
+		printf("\n");
+        }
+	break;
+        case 3:
+        for(int i=0; i<10; i++) {
+                printf("%d Led giallo acceso \n", i+1);
+                sleep(1.2);
+		printf("%d Led giallo spento \n", i+1);
+                sleep(1.2);
+		printf("\n");
+        }
+	break;
+        default:
+        break;
+        }
+
+    } else if (pid<0) {
+    printf("Creazione del processo figlio fallita! \n");
+    }
+}

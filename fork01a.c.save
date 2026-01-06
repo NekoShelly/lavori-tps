@@ -1,0 +1,18 @@
+int main(){
+int b=2;
+int h=4;
+int r=0;
+printf("Calcolo del perimetro e dell'area del rettangolo.");
+int pid=fork();
+if(pid==0){
+r=(b+h)*2;
+printf("Perimetro: ", r);
+sleep(1);
+} else if (pid>0){
+r=b*h;
+printf("Area: ", r);
+sleep(1);}
+}else{
+printf("errore.");
+}
+printf("errore.");}
