@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>gestionePalestra.html</title>
+    <title>Sistema informativo per la gestione di una palestra</title> <!--Titolo del lavoro-->
     <style>
-        div {
+        
+        div {      
             border-top-color: #458cff;
             border-top-style: solid;
             border-top-width: 1px;
@@ -17,7 +18,7 @@
             }
         
     </style>
-
+    <!--Modifica i colori dei bordi e le dimensioni del div con css-->
     
 </head>
 <body>
@@ -25,10 +26,11 @@
     <center>
 
 
-    <font size="4" face="Arial" color="#00258a"><STRONG><h1>Sistema informativo per la gestione di una palestra</h1></STRONG></font>
+    <font size="4" face="Arial" color="#00258a"><STRONG><h1>Sistema informativo per la gestione di una palestra</h1></STRONG></font> <!--Titolo-->
     <font size="4" face="Arial" color="#002a5e">
     <p><form id="formdiregistrazione"> <div>
-    Nome: <input type="text" id="nome" name="nome" size="4" value="" maxlength="20" required>
+    <font face="Arial" color="#00258a"><h2>Registrazione nuovo socio</h2></font>
+    Nome: <input type="text" id="nome" name="nome" size="4" value="" maxlength="20" required> <!--Registra le informazioni del nuovo socio (nome, cognome, data di nascita, email, password e anni di abbonamento)-->
     </p>
     <p>
     Cognome: <input type="text" id="cognome" name="cognome" size="4" value="" maxlength="20" required>
@@ -44,11 +46,11 @@
     </p>
     <p>
     Anni abbonamento: <select name="abbonamento" size="1" required>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
+        <option value="1">1 (100€)</option>
+        <option value="2">2 (200€)</option>
+        <option value="3">3 (300€)</option>
+        <option value="4">4 (400€)</option>
+        <option value="5">5 (500€)</option>
     </select>
     </p>
     <p>
@@ -57,7 +59,7 @@
     </font> </div> </form>
     </center>
      <center><div>
-     <font face="Arial" color="#00258a"><h2>Simulazione ingresso con badge</h2></font>
+     <font face="Arial" color="#00258a"><h2>Simulazione ingresso con badge</h2></font>  <!--Se il numero del badge è 12345 allora è valido e quindi la persona può entrare-->
      <font size="4" face="Arial" color="#002a5e">
     Inserisci il codice del badge (es. "12345"): <input type="text" id="badge" required>
      </p>
@@ -70,23 +72,23 @@
     <script>
     document.getElementById('formdiregistrazione').addEventListener('submit', function(e) {
     e.preventDefault();
-    const nome = document.getElementById('nome').value;
-    const cognome = document.getElementById('cognome').value;
-    const email = document.getElementById('email').value;
+    const nome=document.getElementById('nome').value;
+    const cognome=document.getElementById('cognome').value;
+    const email=document.getElementById('email').value;
 
     alert(`Registrazione completata!\nNome: ${nome}\nCognome: ${cognome}\nEmail: ${email}`);
     });
-
+        
     function controllaIngresso() {
-    const badge = document.getElementById("badge").value;
-    const risultato = document.getElementById("risultato");
+    const badge=document.getElementById("badge").value;
+    const risultato=document.getElementById("risultato");
 
-    if (badge === "12345") {
-        risultato.innerHTML = "Accesso consentito ✅";
-        risultato.style.color = "green";
+    if (badge==="12345") {
+        risultato.innerHTML="Accesso consentito ✅";
+        risultato.style.color="green";
     } else {
-        risultato.innerHTML = "Accesso negato ❌ - Abbonamento scaduto";
-        risultato.style.color = "red";
+        risultato.innerHTML="Accesso negato ❌ - Abbonamento scaduto";
+        risultato.style.color="red";
     }
 }
 
