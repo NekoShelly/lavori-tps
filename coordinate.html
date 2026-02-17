@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>es03b - Coordinate di una retta</title>
+    <script>
+    let m=Number(prompt('Inserisci il coefficiente angolare'));
+    let c=Number(prompt("Inserisci l'intercetta"));
+    let x=-1;
+    let y=m*x+c;
+    console.log('Coordinate ('+x+','+y+')');
+    x=10;
+    y=m*x+c;
+    console.log('Coordinate ('+x+','+y+')');
+    x=0;
+    y=m*x+c;
+    console.log("Coordinate del punto di intersezione con l'asse x ("+x+","+y+")");
+    y=0;
+    x=(y-c)/m;
+    console.log("Coordinate del punto di intersezione con l'asse y ("+x+","+y+")");
+    </script>
+</head>
+<body>
+
+</body>
+</html>
