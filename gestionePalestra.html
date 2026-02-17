@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gestionePalestra.html</title>
+    <style>
+        div {
+            border-top-color: #458cff;
+            border-top-style: solid;
+            border-top-width: 1px;
+            border-bottom-color: #458cff;
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            width: 30%;
+            height: 200pt;
+            }
+        
+    </style>
+
+    
+</head>
+<body>
+    
+    <center>
+
+
+    <font size="4" face="Arial" color="#00258a"><STRONG><h1>Sistema informativo per la gestione di una palestra</h1></STRONG></font>
+    <font size="4" face="Arial" color="#002a5e">
+    <p><form id="formdiregistrazione"> <div>
+    Nome: <input type="text" id="nome" name="nome" size="4" value="" maxlength="20" required>
+    </p>
+    <p>
+    Cognome: <input type="text" id="cognome" name="cognome" size="4" value="" maxlength="20" required>
+    </p>
+    <p>
+    Data di nascita: <input type="date" name="datadinascita" size="4" value="" required>
+    </p>
+    <p>
+    E-mail: <input type="e-mail" id="email" name="e-mail" size="4" value="" maxlength="30" required>
+    </p>
+    <p>
+    Password: <input type="password" name="password" size="4" value="" maxlength="20" required>
+    </p>
+    <p>
+    Anni abbonamento: <select name="abbonamento" size="1" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    </p>
+    <p>
+    <input type="submit" value="INVIA">
+    </p>
+    </font> </div> </form>
+    </center>
+     <center><div>
+     <font face="Arial" color="#00258a"><h2>Simulazione ingresso con badge</h2></font>
+     <font size="4" face="Arial" color="#002a5e">
+    Inserisci il codice del badge (es. "12345"): <input type="text" id="badge" required>
+     </p>
+    <p>
+    <button onclick="controllaIngresso()">Verifica ingresso</button>
+
+    <p id="risultato"></p> </font>
+    </div></center>
+
+    <script>
+    document.getElementById('formdiregistrazione').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const nome = document.getElementById('nome').value;
+    const cognome = document.getElementById('cognome').value;
+    const email = document.getElementById('email').value;
+
+    alert(`Registrazione completata!\nNome: ${nome}\nCognome: ${cognome}\nEmail: ${email}`);
+    });
+
+    function controllaIngresso() {
+    const badge = document.getElementById("badge").value;
+    const risultato = document.getElementById("risultato");
+
+    if (badge === "12345") {
+        risultato.innerHTML = "Accesso consentito ✅";
+        risultato.style.color = "green";
+    } else {
+        risultato.innerHTML = "Accesso negato ❌ - Abbonamento scaduto";
+        risultato.style.color = "red";
+    }
+}
+
+</script>
+</body>
+</html>
