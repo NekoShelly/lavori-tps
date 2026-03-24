@@ -43,8 +43,27 @@
             let result; // Variabile per il risultato
             try {
                 // Esegue l'operazione richiesta
-                // ... inserisci qui il codice per eseguire le operazioni
-                
+                switch(operation){
+                    case "+":
+                        result=num1+num2;
+                        break;
+                    case "-":
+                        result=num1-num2;
+                        break;
+                    case "*":
+                        result=num1*num2;
+                        break;
+                    case "/":
+                        if(num2>0){
+                            result=num1/num2;
+                        } else {
+                            resultDiv.textContent = 'Errore: Non è possibile eseguire la divisione per 0.';
+                        }
+                        break;
+                    case "**":
+                        result=num1**num2;
+                        break;
+                }
                 resultDiv.textContent = 'Risultato: ' + result;
             } catch (error) {
                 // Mostra l'errore se si verifica un problema
