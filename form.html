@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+    h4, h1 {
+        font-family:"Trebuchet MS";
+        color: rgb(31, 42, 52);
+    }
+    input {
+        background-color: rgb(210, 222, 231);
+        border-color: rgb(131, 154, 173);
+    }
+    </style>
+</head>
+<body>
+    <H1>Form</H1>
+    <form onsubmit="dati(event)">
+        <h4>
+        Inserire il nome
+        <input type="text" id="nome">
+        <br><br>
+        Inserire il cognome
+        <input type="text" id="cognome">
+        <br><br>
+        Inserire l'età
+        <input type="text" id="eta">
+        <br><br>
+        <input type="submit" value="Invia">
+        </h4>
+    </form>
+    <script>
+    function dati(event) { //esegue la funzione solo quando premo il pulsante invia
+        event.preventDefault(); //così non si ricarica la pagina e i dati rimangono
+        let n=document.getElementById("nome").value; //in base all'id dell'input richiedo i valori
+        let c=document.getElementById("cognome").value;
+        let e=document.getElementById("eta").value;
+        let persona={nome: n, cognome: c, età: e}
+        console.log("Clicca qui sotto su '▶ Object' per visualizzare l'oggetto");
+        console.log(persona);
+    }
+    </script>
+</body>
+</html>

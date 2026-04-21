@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Calcolatrice Semplice</title>
+    <style>
+        body {
+            background-color: #515c61;
+        }
+        #result {
+            font-family: "Courier New", Courier, monospace;
+            font-weight: 700;
+            font-size: 30px;
+        }
+        #sfondo {
+            place-self: center;
+            padding: 2em;
+            border-style: solid;
+            border-width: 1px;
+            background-color: #728e9c;
+            border-color: white;
+            border-radius: 20px;
+            align-items: center;
+            height: 400px;
+            width: 480px;
+        }
+        h1 {
+            font-family: "Trebuchet MS", Helvetica, sans-serif;
+            letter-spacing: -4px;
+            text-align: center;
+            font-size: 50px;
+            color: white;
+        }
+        form {
+            font-family: "Courier New", Courier, monospace;
+            font-weight: 700;
+            font-size: 23px;
+        }
+        button {
+            font-family: "Trebuchet MS", Helvetica, sans-serif;
+            font-weight: 700;
+            background-color: #515c61;
+            color: white;
+            font-size: 30px;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto;
+            width: 40%; 
+        }
+        input {
+            font-family: "Courier New", Courier, monospace;
+            font-weight: 1000;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calcolatrice</h1>
+
+    <div id="sfondo">
+    <form id="calculatorForm" onsubmit="calcola(); return false;">
+        Primo numero: <input type="text" id="num1" required><br>
+        Secondo numero: <input type="text" id="num2" required><br>
+        Operazione: <input type="text" id="operation" placeholder="+, -, *, /, **" required><br>
+        <br>
+        <button type="submit">Calcola</button>
+    </form>
+    <br> 
+    <br> <!--Aggiungo 2 spazi -->
+    <!-- Div per visualizzare il risultato o gli errori -->
+    <div id="result"></div>
+    </div>
+
+    <script>
+        // Funzione chiamata al submit del form
+        function calcola() {
+            // Legge i valori inseriti dall'utente
+            const num1Input = document.getElementById('num1').value;
+            const num2Input = document.getElementById('num2').value;
+            const operation = document.getElementById('operation').value.trim(); // trim() rimuove spazi iniziali/finali
+            const resultDiv = document.getElementById('result'); // Div per il risultato
+
+            // Converte i valori in numeri decimali
+            const num1 = parseFloat(num1Input);
+            const num2 = parseFloat(num2Input);
+
+            // Verifica se i numeri sono validi
+            if (Number.isNaN(num1) || Number.isNaN(num2)) {
+                resultDiv.textContent = 'Errore: Inserisci due numeri validi.';
+                return; // Esce dalla funzione se i numeri non sono validi
+            }
+
+            let result; // Variabile per il risultato
+            try {
+                // Esegue l'operazione richiesta
+                switch(operation){ // In base al simbolo di operazione scelta calcola il risultato
+                    case "+":
+                        result=num1+num2;
+                        break;
+                    case "-":
+                        result=num1-num2;
+                        break;
+                    case "*":
+                        result=num1*num2;
+                        break;
+                    case "/":
+                        if(num2!=0){ //perchè non è possibile dividere per 0
+                            result=num1/num2;
+                        } else {
+                            resultDiv.textContent= 'Errore: Non è possibile eseguire la divisione per 0.';
+                            return; // mostra l'errore della divisione per 0
+                        }
+                        break;
+                    case "**":
+                        result=num1**num2;
+                        break;
+                    default:
+                        resultDiv.textContent= "Errore. Operatore non valido"; //se l'operatore non è valido mostra errore
+                        return;
+                        break;
+                }
+                resultDiv.textContent = 'Risultato: ' + result;
+            } catch (error) {
+                // Mostra l'errore se si verifica un problema
+                resultDiv.textContent = 'Errore: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>
