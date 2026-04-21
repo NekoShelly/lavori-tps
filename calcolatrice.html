@@ -113,6 +113,9 @@
                     case "**":
                         result=num1**num2;
                         break;
+                    default:
+                        resultDiv.textContent = 'Operazione non valida.';
+                        break;
                 }
                 resultDiv.textContent = 'Risultato: ' + result;
             } catch (error) {
