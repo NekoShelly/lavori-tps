@@ -1,4 +1,3 @@
-fork08.js
 let n=359;
 function inverti_cifre(num) {
     let s=num.toString(); //converto n da numero a stringa
