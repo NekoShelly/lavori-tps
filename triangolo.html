@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Triangolo di Tartaglia</title>
+    <style>
+        body {
+            background-color: #e6faff;
+        }
+        form {
+            font-family: "Trebuchet MS", Helvetica, sans-serif;
+            font-weight: 700;
+            font-size: 27px;
+        }
+        input {
+            width: 70px;
+            height: 27px;
+            font-size: 27px;
+        }
+        button {
+            font-family: "Trebuchet MS", Helvetica, sans-serif;
+            font-weight: 700;
+            background-color: #e6faff;
+            color: #00b3ff;
+            font-size: 30px;
+            border-radius: 10px;
+            border-color: #00b3ff;
+            display: block;
+            margin: 0 auto;
+            width:20%;
+        }
+        h1 {
+            font-family: "Trebuchet MS", Helvetica, sans-serif;
+            letter-spacing: -4px;
+            text-align: center;
+            font-size: 50px;
+            color: #00b3ff;
+        }
+        #sfondo {
+            place-self: center;
+            padding: 3em;
+            border-style: solid;
+            border-width: 4px;
+            background-color: #69deff;
+            border-color: #00b3ff;
+            border-radius: 20px;
+            align-items: center;
+            height: 150px;
+            width: 600px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Triangolo di Tartaglia</h1>
+    <br>
+    <br>
+    <div id="sfondo">
+    <form id="triangolo" onsubmit="triangoloTar(); return false;">
+        Inserisci il numero di righe: <input type="text" id="n" required><br>
+    <br>
+    <br>
+        <button type="submit">Invia</button>
+    </form>
+    </div>
+    <script>
+    function triangoloTar() {
+        const num=document.getElementById('n').value;
+        const n= parseFloat(num);
+        let a=1,r=[[]],s="                          ";
+        r[0]=[]; //uso l'array r
+        r[0][0]=a;
+        console.log(s+"  "+r[0][0]);
+        for(let i=1;i<n;i++){
+            r[i]=[];
+            r[i][0]=a;
+            r[i][i]=a;
+            for(let k=1;k<i;k++){
+                r[i][k]=r[i-1][k-1]+r[i-1][k];
+            }
+            console.log(s+r[i].join("   ")); //join unisce gli elementi della stringa
+            s=s.substring(2);
+        }
+        return "";
+    }
+    </script>
+</body>
+</html>
