@@ -67,7 +67,10 @@
     <script>
     function triangoloTar() {
         const num=document.getElementById('n').value;
-        const n= parseFloat(num);
+        const n=parseFloat(num);
+        if(n==0){
+            return "";
+        }
         let a=1,r=[[]],s="                          ";
         r[0]=[]; //uso l'array r
         r[0][0]=a;
